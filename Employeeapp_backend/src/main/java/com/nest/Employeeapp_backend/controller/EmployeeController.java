@@ -18,4 +18,10 @@ public class EmployeeController {
     public String Search(){
         return "Search employees";
     }
+
+    @GetMapping("/edit")
+    public String Edit()
+    {
+        return "Edit employees";
+    }
 }
