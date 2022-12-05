@@ -24,6 +24,11 @@ public class EmployeeController {
     {
         return "Edit employees";
     }
+    @GetMapping("/view")
+            public String Viewall()
+    {
+        return "view all employees";
+    }
     @GetMapping("/delete")
     public String Delete(){
         return "delete employee";
