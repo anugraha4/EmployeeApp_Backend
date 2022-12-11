@@ -5,7 +5,9 @@ import com.nest.Employeeapp_backend.model.Employees;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 public class EmployeeController {
@@ -57,8 +59,13 @@ public class EmployeeController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/delete")
-    public String Delete(){
-        return "delete employee";
+    @PostMapping(path="/delete",consumes = "application/json",produces = "application/json")
+    public HashMap<String,String> Delete(@RequestBody Employees e){
+        String empid=String.valueOf(e.getId());
+        System.out.println(empid);
+        dao.deleteEmployee(e.getId());
+        HashMap<String, String> map = new HashMap<>();
+        map.put("status","success");
+        return map;
     }
 }
